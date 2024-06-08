@@ -46,6 +46,7 @@ main {
 }
 
 /* ELEMENTS */
+
 .name {
   position: relative;
   font-size: 4rem;
@@ -164,4 +165,8 @@ main {
 .player--winner .name {
   font-weight: 700;
   color: #c7365f;
+}
+
+.hidden {
+  display: none;
 }
