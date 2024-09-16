@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic</title>
+    <style>
+      body {
+        height: 100%;
+        width: 100%;
+        background-color: #91a6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <h1 style="text-align: center">Basics</h1>
+    <h1 style="text-align: center">of JavaScript</h1>
+    <div id="dom_id" class="dom_class">
+      <!-- This is div(1st layer)
+      <span
+        >This is inner text (2nd layer)
+        <section>This is the 3rd layer</section>
+      </span>
+    </div>
+
+    <input type="password" name="" id="" />
+
+    <ul>
+      <li class="list-item">One</li>
+      <li class="list-item">Two</li>
+      <li class="list-item">Three</li>
+      <li class="list-item">Four</li>
+    </ul> -->
+
+    <div class="parent">
+      <div class="day">Sunday</div>
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+    </div>
+
+    
+
+    <!-- <script src="script.js"></script> -->
+
+    <!-- <script>
+      const div = document.createElement('div') //creating a div from js
+      console.log(div);
+      div.className = "main"
+      div.id = Math.round(Math.random() * 10 +1)
+      div.setAttribute("title", "generated title")
+      div.style.backgroundColor = "red"
+      div.style.padding = "12px"
+      // div.innerText = "Learning with Chai aur code"
+      const addText = document.createTextNode("Learning with Chai aur code")
+      div.appendChild(addText)
+
+      document.body.appendChild(div) //adding div to body
+    </script> -->
+
+
+    <ul class="language">
+      <li>JavaScript</li>
+    </ul>
+
+    <script>
+      function addLanguage(langName) {
+        const lang = document.createElement('li')
+        lang.innerHTML = langName
+        document.querySelector(".language").appendChild(lang)
+      }
+
+      addLanguage("Java")
+      addLanguage("Python")
+
+      function addOptimisedLanguage(langName) {
+        const lang = document.createElement('li')
+        lang.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(lang)
+      }
+      addOptimisedLanguage('golang')
+    </script>
+  </body>
+</html>

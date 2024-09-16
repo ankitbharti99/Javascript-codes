@@ -5,6 +5,20 @@
 //   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -24,19 +38,18 @@ const restaurant = {
     ];
   },
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
+  //ES6 enhancement
+  //If any object is outside the main object but want openingHours object inside this object then
+  // openingHours: openingHours,
+  openingHours,
+
+  //////////// No need to write function expression like this in ES6 ////////
+  // orderPasta: function (ing1, ing2, ing3) {
+  //   console.log(`Your pasta is ready with ${ing1}, ${ing2} and ${ing3}`);
+  // },
+  ////////It can be written like this////////
+  orderPasta(ing1, ing2, ing3) {
+    console.log(`Your pasta is ready with ${ing1}, ${ing2} and ${ing3}`);
   },
 
   orderDelivery: function ({
@@ -48,10 +61,6 @@ const restaurant = {
     console.log(
       `Order Received! at ${address} at ${time}pm and dishes were ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]}`
     );
-  },
-
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(`Your pasta is ready with ${ing1}, ${ing2} and ${ing3}`);
   },
 
   orderPizza: function (mainIngredient, ...optionalIngedient) {
@@ -205,6 +214,7 @@ console.log(fullNmae);
 // restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
 // restaurant.orderPasta(...ingredients); //using spread operator
 
+/*
 // SPREAD, because on RIGHT side of '='
 const arr = [2, 3, ...[5, 6, 7]];
 
@@ -241,6 +251,7 @@ add(...x);
 
 restaurant.orderPizza('onion', 'mushroom', 'spinach', 'olives');
 restaurant.orderPizza('sauce');
+*/
 
 /*
 // Use ANY data type, return ANY data type, Short-Circuiting.
@@ -290,3 +301,67 @@ const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 for (const item of menu.entries()) {
   console.log(`${item[0] + 1}: ${item[1]}`);
 }
+
+//Looping over Object using -- for of loop --
+//Property NAMES
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days: `;
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+//Property VALUES
+const values = Object.values(openingHours);
+console.log(values);
+
+//Entrre object
+const entries = Object.entries(openingHours);
+// console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
+//////////////////
+// SETS //
+// A Set is a collection of unique values. means no dublicates.
+//////////////////
+
+// const orderSet = new Set(iterables) -- Syntax
+const orderSet = new Set([
+  'Idli',
+  10,
+  'Bonda',
+  'Idli',
+  'dosa',
+  'Idli',
+  'Bonda',
+  10,
+]);
+console.log(orderSet);
+console.log(orderSet.size);
+
+//check elememt
+console.log(orderSet.has('Idli'));
+console.log(orderSet.has('Maggie'));
+
+orderSet.add('1');
+orderSet.add(1);
+orderSet.delete('dosa');
+console.log(orderSet);
+
+for (const order of orderSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('ankitbharti').size);
