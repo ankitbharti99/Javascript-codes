@@ -40,7 +40,12 @@ body {
   padding-bottom: 7px;
 }
 
-.display img {
+#currentValue {
+  color: #019f55;
+  padding-bottom: 7px;
+}
+
+img {
   width: 30px;
   cursor: pointer;
 }
@@ -63,6 +68,7 @@ body {
   font-size: 22px;
   font-weight: 300;
   cursor: pointer;
+  margin-left: 100px;
 }
 
 .pass {

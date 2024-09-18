@@ -1,39 +1,25 @@
 const randomPass = document.getElementById("password");
 
-const length = 9;
+const rangeInput = document.getElementById("rangeInput");
+const currentValue = document.getElementById("currentValue");
 
-const uppeerCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lowerCase = "abcdefghijklmnopqrstuvwxyz";
-const number = "0123456789";
-const character = "!@#$%^&*(){}[]<>?/|~`.,";
+rangeInput.addEventListener("input", function () {
+  currentValue.textContent = rangeInput.value;
+});
 
-const allChars = uppeerCase + lowerCase + number + character;
+const allChars =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(){}[]<>?/|~`.,";
 
 document.getElementById("generate").addEventListener("click", function () {
   let password = "";
-  while (length > password.length) {
+  while (currentValue.textContent > password.length) {
     password += allChars[Math.floor(Math.random() * allChars.length)];
   }
   randomPass.value = password;
 });
 
-/*
-function passwordGen() {
-  let password = "";
-
-  //   password += uppeerCase[Math.floor(Math.random() * uppeerCase.length)];
-  //   password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-  //   password += number[Math.floor(Math.random() * number.length)];
-  //   password += character[Math.floor(Math.random() * character.length)];
-
-  //   console.log(password);
-
-  while (length > password.length) {
-    password += allChars[Math.floor(Math.random() * allChars.length)];
-  }
-
-  randomPass.value = password;
-}
-
-passwordGen();
-*/
+const copyPass = document.getElementById("copy");
+copyPass.addEventListener("click", function () {
+  randomPass.select();
+  navigator.clipboard.writeText(randomPass.value);
+});

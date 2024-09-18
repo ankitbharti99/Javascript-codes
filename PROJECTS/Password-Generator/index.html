@@ -14,9 +14,15 @@
       </h1>
       <div class="display">
         <input type="text" id="password" class="pass" placeholder="Password" />
-        <img src="copy.png" alt="Copy it" />
+        <img src="copy.png" alt="Copy it" id="copy" />
       </div>
-      <button id="generate">Generate Password</button>
+
+      <div class="start">
+        <p id="set_length">Length: <span id="currentValue">6</span></p>
+        <input type="range" id="rangeInput" min="6" max="25" value="6" />
+
+        <button id="generate">Generate Password</button>
+      </div>
     </div>
   </body>
   <script src="script.js"></script>
